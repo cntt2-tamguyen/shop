@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Shop - Leading Edu</title>
+
+  <link rel="shortcut icon" href="../static/images/logo.png" th:href="@{/images/logo.png}">
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark" th:fragment="header">
+    <a class="navbar-brand" href="#">Shop</a>
+  </nav>
+
+  <h1>Main content</h1>
+  <footer class="container" th:fragment="footer">
+    <strong>@2019 Leading Edu</strong>
+  </footer>
+</body>
+</html>
