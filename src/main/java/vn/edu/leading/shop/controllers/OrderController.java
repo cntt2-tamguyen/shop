@@ -1,5 +1,6 @@
 package vn.edu.leading.shop.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,7 @@ import vn.edu.leading.shop.models.OrderModel;
 import vn.edu.leading.shop.services.OrderService;
 
 import javax.validation.Valid;
-
+@Controller
 public class OrderController {
     private final OrderService orderService;
 
