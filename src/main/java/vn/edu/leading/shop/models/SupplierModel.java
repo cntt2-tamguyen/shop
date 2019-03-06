@@ -13,11 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 @Table(name = "shop_suppliers")
 
-public class SupplierModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class SupplierModel extends BassModel<SupplierModel>{
     @NotEmpty
     @Column(name = "supplier_name",nullable = false)
     private String supplierName;

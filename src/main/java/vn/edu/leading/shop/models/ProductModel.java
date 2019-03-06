@@ -14,10 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 
 @Table(name = "shop_products")
-public class ProductModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ProductModel extends BassModel <ProductModel>{
 
     @NotEmpty
     @Column(name = "product_name",nullable = false)

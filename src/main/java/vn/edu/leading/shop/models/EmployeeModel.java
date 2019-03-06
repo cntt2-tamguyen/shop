@@ -12,10 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 @Entity
 @Table(name = "shop_employees")
-public class EmployeeModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class EmployeeModel extends BassModel<EmployeeModel>{
 
     @NotEmpty
     @Column (name = "last_name",nullable = false)

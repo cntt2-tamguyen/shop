@@ -12,10 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @ToString
 @Table (name = "shop_orders")
-public class OrderModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class OrderModel extends BassModel<OrderModel>{
 
     @NotEmpty
     @Column(name = "customer_id",nullable = false)

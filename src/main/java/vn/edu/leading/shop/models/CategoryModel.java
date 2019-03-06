@@ -12,11 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 @Entity
 @Table(name = "shop_categories")
-public class CategoryModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class CategoryModel extends BassModel<CategoryModel>{
 
     @NotEmpty
     @Column(name = "category_name")
