@@ -1,17 +1,23 @@
 package vn.edu.leading.shop.services;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.CategoryModel;
 import vn.edu.leading.shop.repositories.CategoryRepository;
 
 
 import java.util.List;
 
+@Repository
+@Service
+
 public class CategoryServicelmpl implements CategoryService {
     private final CategoryRepository categoryRepository;
 
-    public CategoryServicelmpl(CategoryRepository categoryRepository){
+    public CategoryServicelmpl(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
+
 
     @Override
     public List<CategoryModel> findAll() {
@@ -38,8 +44,8 @@ public class CategoryServicelmpl implements CategoryService {
     }
 
     @Override
-    public void save(CategoryModel categoryModel) {
-        categoryRepository.save(categoryModel);
+    public void save(CategoryModel category) {
+        categoryRepository.save(category);
     }
 
     @Override

@@ -4,23 +4,23 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
 @ToString
-@Entity
-@Table(name = "shop_categories")
-public class CategoryModel {
+@Table(name = "shop_shippers")
 
+public class ShipperModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @NotEmpty
-    @Column(name = "category_name")
-    String categoryName;
+    @Column(name = "shipper_name",nullable = false)
+    private String shipperName;
 
-    String description;
+    private String phone;
+
 }

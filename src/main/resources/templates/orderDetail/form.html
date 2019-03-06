@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+
+<body>
+<nav th:replace="layout :: header"></nav>
+
+<div class="container" id="main-content">
+    <div class="row d-flex justify-content-center">
+        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/orderDetails/save}"
+              th:object="${orderDetailModel}">
+            <h5 class="text-center">OrderDetail form</h5>
+
+            <input th:field="*{id}" type="hidden"/>
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Order ID" th:errorclass="field-error"
+                       th:field="*{orderId}" type="text"/>
+                <em th:errors="*{orderId}" th:if="${#fields.hasErrors('orderId')}"></em>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Product ID" th:errorclass="field-error"
+                       th:field="*{productId}" type="email"/>
+                <em th:errors="*{productId}" th:if="${#fields.hasErrors('productId')}"></em>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Quantity" th:field="*{quantity}"
+                       type="text"/>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-block btn-primary" type="submit">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div><!-- /.container -->
+
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
