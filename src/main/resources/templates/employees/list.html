@@ -53,8 +53,8 @@
             <tbody>
               <tr th:each="employee,iterStat:${employees}">
                 <th scope="row" th:text="${iterStat.count}"></th>
-                <td th:text="${employee.firstName}"></td>
                 <td th:text="${employee.lastName}"></td>
+                <td th:text="${employee.firstName}"></td>
                 <td th:text="${employee.birthDate}"></td>
                 <td th:text="${employee.photo}"></td>
                 <td th:text="${employee.notes}"></td>

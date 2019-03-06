@@ -56,7 +56,7 @@ public class EmployeeController {
         }
         employeeService.save(employee);
         redirect.addFlashAttribute("successMessage", "Saved employee successfully!");
-        return "redirect:/customers";
+        return "redirect:/employees";
     }
 
     @GetMapping("/employees/{id}/delete")

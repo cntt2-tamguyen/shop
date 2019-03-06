@@ -54,14 +54,14 @@ public class OrderDetailController {
             return "orderDetails/form";
         }
         orderDetailService.save(orderDetail);
-        redirect.addFlashAttribute("successMessage", "Saved orderDetail successfully!");
+        redirect.addFlashAttribute("successMessage", "Saved orderDetails successfully!");
         return "redirect:/orderDetails";
     }
 
     @GetMapping("/orderDetails/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (orderDetailService.delete(id)) {
-            redirect.addFlashAttribute("successMessage", "Deleted orderDetail successfully!");
+            redirect.addFlashAttribute("successMessage", "Deleted orderDetails successfully!");
             return "redirect:/orderDetails";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
