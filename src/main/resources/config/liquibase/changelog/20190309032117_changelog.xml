@@ -1,0 +1,125 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Admin (generated)" id="1552101681977-1">
+        <createTable tableName="shop_categories">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_categoriesPK"/>
+            </column>
+            <column name="category_name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552101681977-2">
+        <createTable tableName="shop_customers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_customersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="contact_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="customer_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552101681977-3">
+        <createTable tableName="shop_employees">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_employeesPK"/>
+            </column>
+            <column name="birth_date" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notes" type="VARCHAR(255)"/>
+            <column name="photo" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552101681977-4">
+        <createTable tableName="shop_order_details">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_order_detailsPK"/>
+            </column>
+            <column name="order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552101681977-5">
+        <createTable tableName="shop_orders">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_ordersPK"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_date" type="VARCHAR(255)"/>
+            <column name="shipper_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552101681977-6">
+        <createTable tableName="shop_products">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_productsPK"/>
+            </column>
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="BIGINT"/>
+            <column name="product_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552101681977-7">
+        <createTable tableName="shop_shippers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_shippersPK"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="shipper_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552101681977-8">
+        <createTable tableName="shop_suppliers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_suppliersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="contact_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="postal_code" type="VARCHAR(255)"/>
+            <column name="supplier_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

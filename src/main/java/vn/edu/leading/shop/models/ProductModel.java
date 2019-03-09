@@ -30,6 +30,6 @@ public class ProductModel extends BassModel <ProductModel>{
 
     private String unit;
 
-    private Long price;
+    private Double price;
 
 }

@@ -1,5 +1,7 @@
 package vn.edu.leading.shop.services;
 
+import vn.edu.leading.shop.dto.OrderDetailDTO;
+import vn.edu.leading.shop.dto.OrderNameDTO;
 import vn.edu.leading.shop.models.OrderModel;
 
 import java.util.List;
@@ -16,4 +18,9 @@ public interface OrderService {
     void save (OrderModel order);
 
     boolean delete (Long id);
+
+    OrderNameDTO getNameCustomer(Long id);
+
+    List<OrderDetailDTO> listProduct(Long id);
+
 }

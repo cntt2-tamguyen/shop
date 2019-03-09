@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head"></head>
+
+<body>
+<nav th:replace="layout::header"></nav>
+
+<div class="container" id="main-content">
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <span>Customer Name: </span> <span th:text="${name.customerName}"></span>
+            <br>
+            <span>Shipper Name: </span> <span th:text="${name.shipperName}"></span>
+            <br>
+            <span>FirstNameEmployee: </span> <span th:text="${name.firstNameEmployee}"></span>
+            <br>
+        </div>
+
+        <th:block th:if="${#lists.isEmpty(list)}">
+            <h5>No Orders</h5>
+        </th:block>
+
+        <th:block th:unless="${#lists.isEmpty(list)}">
+            <div class="table-responsive">
+                <h5>List of orders</h5>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sum</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="order,iterStat:${list}">
+                        <th scope="row" th:text="${iterStat.count}"></th>
+                        <td th:text="${order.productName}"></td>
+                        <td th:text="${order.price}"></td>
+                        <td th:text="${order.quantity}"></td>
+                        <td th:text="${order.sum}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+    </div>
+</div>
+
+<footer th:replace="layout::footer"></footer>
+</body>
+</html>
