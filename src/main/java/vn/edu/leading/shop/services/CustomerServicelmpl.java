@@ -7,7 +7,6 @@ import vn.edu.leading.shop.repositories.CustomerRepository;
 
 import java.util.List;
 
-@Repository
 @Service
 
 public class CustomerServicelmpl implements CustomerService {

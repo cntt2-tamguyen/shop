@@ -6,7 +6,7 @@ import vn.edu.leading.shop.models.ProductModel;
 import vn.edu.leading.shop.repositories.ProductRepository;
 
 import java.util.List;
-@Repository
+
 @Service
 public class ProductServicelmpl implements ProductService {
     private final ProductRepository productRepository;

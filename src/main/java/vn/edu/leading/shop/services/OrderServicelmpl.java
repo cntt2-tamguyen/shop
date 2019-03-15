@@ -11,7 +11,7 @@ import vn.edu.leading.shop.repositories.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+
 @Service
 
 public class OrderServicelmpl implements OrderService {

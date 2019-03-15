@@ -7,7 +7,6 @@ import vn.edu.leading.shop.repositories.OrderDetailRepository;
 
 import java.util.List;
 
-@Repository
 @Service
 
 public class OrderDetailServicelmpl implements OrderDetailService{

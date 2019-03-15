@@ -7,9 +7,11 @@ import vn.edu.leading.shop.repositories.EmployeeRepository;
 
 import java.util.List;
 
-@Repository
+
 @Service
 public class EmployeeServicelmpl implements EmployeeService{
+
+
     private final EmployeeRepository employeeRepository;
 
     public EmployeeServicelmpl(EmployeeRepository employeeRepository) {

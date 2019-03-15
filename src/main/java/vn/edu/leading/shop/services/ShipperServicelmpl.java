@@ -7,7 +7,7 @@ import vn.edu.leading.shop.repositories.ShipperRepository;
 
 import java.util.List;
 
-@Repository
+
 @Service
 
 public class ShipperServicelmpl  implements ShipperService {

@@ -8,7 +8,6 @@ import vn.edu.leading.shop.repositories.CategoryRepository;
 
 import java.util.List;
 
-@Repository
 @Service
 
 public class CategoryServicelmpl implements CategoryService {

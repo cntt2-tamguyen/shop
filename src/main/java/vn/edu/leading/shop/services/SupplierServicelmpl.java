@@ -6,7 +6,7 @@ import vn.edu.leading.shop.models.SupplierModel;
 import vn.edu.leading.shop.repositories.SupplierRepository;
 
 import java.util.List;
-@Repository
+
 @Service
 
 public class SupplierServicelmpl  implements SupplierService {
