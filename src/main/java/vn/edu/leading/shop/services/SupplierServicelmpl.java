@@ -36,7 +36,7 @@ public class SupplierServicelmpl  implements SupplierService {
         SupplierModel supplierModel = supplierRepository.findById(supplier.getId()).orElse(null);
         if (supplierModel == null)
             return false;
-        supplierRepository.delete(supplierModel);
+        supplierRepository.save(supplier);
         return true;
     }
 
