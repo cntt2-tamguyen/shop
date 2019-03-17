@@ -38,7 +38,7 @@ public class CategoryServicelmpl implements CategoryService {
         CategoryModel categoryModel = categoryRepository.findById(category.getId()).orElse(null);
         if (categoryModel == null)
             return false;
-        categoryRepository.delete(categoryModel);
+        categoryRepository.save(category);
         return true;
     }
 
