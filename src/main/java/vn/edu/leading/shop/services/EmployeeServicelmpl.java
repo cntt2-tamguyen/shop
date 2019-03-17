@@ -38,7 +38,7 @@ public class EmployeeServicelmpl implements EmployeeService{
         EmployeeModel employeeModel = employeeRepository.findById(employee.getId()).orElse(null);
         if (employeeModel == null)
             return false;
-        employeeRepository.delete(employeeModel);
+        employeeRepository.save(employee);
         return true;
     }
 
