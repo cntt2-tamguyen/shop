@@ -53,7 +53,7 @@ public class OrderServicelmpl implements OrderService {
         OrderModel orderModel = orderRepository.findById(order.getId()).orElse(null);
         if (orderModel == null)
             return false;
-        orderRepository.delete(orderModel);
+        orderRepository.save(order);
         return true;
     }
 

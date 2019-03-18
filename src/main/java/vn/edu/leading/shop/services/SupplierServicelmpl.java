@@ -1,6 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.SupplierModel;
 import vn.edu.leading.shop.repositories.SupplierRepository;
@@ -36,7 +35,7 @@ public class SupplierServicelmpl  implements SupplierService {
         SupplierModel supplierModel = supplierRepository.findById(supplier.getId()).orElse(null);
         if (supplierModel == null)
             return false;
-        supplierRepository.delete(supplierModel);
+        supplierRepository.save(supplier);
         return true;
     }
 

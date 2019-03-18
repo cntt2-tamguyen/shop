@@ -37,7 +37,7 @@ public class ShipperServicelmpl  implements ShipperService {
         ShipperModel shipperModel = shipperRepository.findById(shipper.getId()).orElse(null);
         if (shipperModel == null)
             return false;
-        shipperRepository.delete(shipperModel);
+        shipperRepository.save(shipper);
         return true;
     }
 

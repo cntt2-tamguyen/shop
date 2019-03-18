@@ -35,7 +35,7 @@ public class ProductServicelmpl implements ProductService {
         ProductModel productModel = productRepository.findById(product.getId()).orElse(null);
         if (productModel == null)
             return false;
-        productRepository.delete(productModel);
+        productRepository.save(product);
         return true;
     }
 

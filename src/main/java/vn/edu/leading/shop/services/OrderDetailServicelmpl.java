@@ -36,7 +36,7 @@ public class OrderDetailServicelmpl implements OrderDetailService{
         OrderDetailModel orderDetailModel = orderDetailRepository.findById(orderDetail.getId()).orElse(null);
         if (orderDetailModel == null)
             return false;
-        orderDetailRepository.delete(orderDetailModel);
+        orderDetailRepository.save(orderDetail);
         return true;
     }
 

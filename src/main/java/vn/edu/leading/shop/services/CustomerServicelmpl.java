@@ -36,7 +36,7 @@ public class CustomerServicelmpl implements CustomerService {
         CustomerModel customerModel = customerRepository.findById(customer.getId()).orElse(null);
         if (customerModel == null)
             return false;
-        customerRepository.delete(customerModel);
+        customerRepository.save(customer);
         return true;
     }
 
