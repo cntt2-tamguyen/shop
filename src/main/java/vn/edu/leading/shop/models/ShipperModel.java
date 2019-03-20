@@ -18,6 +18,7 @@ public class ShipperModel extends BassModel<ShipperModel>{
     @Column(name = "shipper_name",nullable = false)
     private String shipperName;
 
+    @Column(name = "phone", nullable = false)
     private String phone;
 
 }
