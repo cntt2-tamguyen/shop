@@ -6,6 +6,7 @@ import vn.edu.leading.shop.models.ProductModel;
 import java.util.List;
 
 public interface ProductService {
+
     List<ProductModel> findAll();
 
     List<ProductModel> search(String term);

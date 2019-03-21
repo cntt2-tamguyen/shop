@@ -15,6 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "shop_categories")
 public class CategoryModel extends BassModel<CategoryModel> {
+
     @NotEmpty
     @Column(name = "category_name")
     String categoryName;

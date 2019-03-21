@@ -13,6 +13,7 @@ import java.io.Serializable;
 @ToString
 @MappedSuperclass
 public class BassModel<T extends BassModel<T>> implements Persistable, Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id

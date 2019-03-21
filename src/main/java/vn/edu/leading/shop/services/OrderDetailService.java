@@ -7,6 +7,7 @@ import java.util.List;
 
 
 public interface OrderDetailService {
+
     List<OrderDetailModel> findAll();
 
     List<OrderDetailModel> search(String term);

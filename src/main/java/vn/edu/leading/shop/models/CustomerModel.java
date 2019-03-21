@@ -17,6 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "shop_customers")
 public class CustomerModel extends BassModel<CustomerModel> {
+
     @NotEmpty
     @Column(name = "customer_name", nullable = false)
     private String customerName;

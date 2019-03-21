@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface ShipperRepository extends JpaRepository<ShipperModel, Long> {
+
     List<ShipperModel> findByShipperNameContaining(String term);
 }

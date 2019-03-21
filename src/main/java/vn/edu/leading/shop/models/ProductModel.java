@@ -15,6 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "shop_products")
 public class ProductModel extends BassModel<ProductModel> {
+
     @NotEmpty
     @Column(name = "product_name", nullable = false)
     private String productName;

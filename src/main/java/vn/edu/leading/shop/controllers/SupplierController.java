@@ -15,8 +15,8 @@ import vn.edu.leading.shop.services.SupplierService;
 import javax.validation.Valid;
 
 @Controller
-
 public class SupplierController {
+
     private final SupplierService supplierService;
 
     public SupplierController(SupplierService supplierService) {

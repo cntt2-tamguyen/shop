@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public class SupplierServicelmpl implements SupplierService {
+
     private final SupplierRepository supplierRepository;
 
     public SupplierServicelmpl(SupplierRepository supplierRepository) {

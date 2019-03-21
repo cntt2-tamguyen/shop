@@ -5,6 +5,7 @@ import vn.edu.leading.shop.models.ShipperModel;
 import java.util.List;
 
 public interface ShipperService {
+
     List<ShipperModel> findAll();
 
     List<ShipperModel> search(String term);

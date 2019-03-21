@@ -5,6 +5,7 @@ import vn.edu.leading.shop.models.CustomerModel;
 import java.util.List;
 
 public interface CustomerService {
+
     List<CustomerModel> findAll();
 
     List<CustomerModel> search(String term);

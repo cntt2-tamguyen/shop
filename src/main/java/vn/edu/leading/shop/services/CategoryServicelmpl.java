@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public class CategoryServicelmpl implements CategoryService {
+
     private final CategoryRepository categoryRepository;
 
     public CategoryServicelmpl(CategoryRepository categoryRepository) {

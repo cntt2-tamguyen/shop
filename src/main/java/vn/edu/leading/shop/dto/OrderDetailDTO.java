@@ -8,6 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class OrderDetailDTO {
+
     private String productName;
 
     private Double price;

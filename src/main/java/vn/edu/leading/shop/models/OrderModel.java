@@ -13,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "shop_orders")
 public class OrderModel extends BassModel<OrderModel> {
+
     @NotEmpty
     @Column(name = "customer_id",nullable = false)
     private Long customerId;

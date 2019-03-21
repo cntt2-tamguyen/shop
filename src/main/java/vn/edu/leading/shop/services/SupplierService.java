@@ -5,6 +5,7 @@ import vn.edu.leading.shop.models.SupplierModel;
 import java.util.List;
 
 public interface SupplierService {
+
     List<SupplierModel> findAll();
 
     List<SupplierModel> search(String term);

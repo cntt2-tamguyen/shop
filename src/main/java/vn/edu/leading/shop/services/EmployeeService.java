@@ -5,6 +5,7 @@ import vn.edu.leading.shop.models.EmployeeModel;
 import java.util.List;
 
 public interface EmployeeService {
+
     List<EmployeeModel> findAll();
 
     List<EmployeeModel> search(String term);

@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 @Configuration
 public class LiquibaseConfiguration {
+
     private final Logger log = LoggerFactory.getLogger(LiquibaseConfiguration.class);
 
     private final Environment env;

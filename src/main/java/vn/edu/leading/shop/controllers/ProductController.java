@@ -16,6 +16,7 @@ import javax.validation.Valid;
 
 @Controller
 public class ProductController {
+
     private final ProductService productService;
 
     public ProductController(ProductService productService) {

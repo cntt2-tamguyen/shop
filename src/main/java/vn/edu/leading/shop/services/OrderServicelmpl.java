@@ -12,12 +12,19 @@ import java.util.List;
 
 @Service
 public class OrderServicelmpl implements OrderService {
+
     private final OrderRepository orderRepository;
+
     private final CustomerRepository customerRepository;
+
     private final EmployeeRepository employeeRepository;
+
     private final ShipperRepository shipperRepository;
+
     private final OrderDetailRepository orderDetailRepository;
+
     private final ProductRepository productRepository;
+
     private final CategoryRepository categoryRepository;
 
     public OrderServicelmpl(OrderRepository orderRepository, CustomerRepository customerRepository, EmployeeRepository employeeRepository, ShipperRepository shipperRepository, OrderDetailRepository orderDetailRepository, ProductRepository productRepository, CategoryRepository categoryRepository) {
