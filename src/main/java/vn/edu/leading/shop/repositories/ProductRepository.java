@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 import vn.edu.leading.shop.models.ProductModel;
 
 import java.util.List;
+
 @Repository
 public interface ProductRepository extends JpaRepository<ProductModel, Long> {
-    List<ProductModel> findByProductNameContaining (String term);
+    List<ProductModel> findByProductNameContaining(String term);
 }

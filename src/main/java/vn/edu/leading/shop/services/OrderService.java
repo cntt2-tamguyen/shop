@@ -9,18 +9,17 @@ import java.util.List;
 public interface OrderService {
     List<OrderModel> findAll();
 
-    List<OrderModel> search (String term);
+    List<OrderModel> search(String term);
 
-    OrderModel findById (Long id);
+    OrderModel findById(Long id);
 
-    boolean update (OrderModel order);
+    boolean update(OrderModel order);
 
-    void save (OrderModel order);
+    void save(OrderModel order);
 
-    boolean delete (Long id);
+    boolean delete(Long id);
 
     OrderNameDTO getNameCustomer(Long id);
 
     List<OrderDetailDTO> listProduct(Long id);
-
 }

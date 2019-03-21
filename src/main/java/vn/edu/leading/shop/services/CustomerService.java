@@ -7,13 +7,13 @@ import java.util.List;
 public interface CustomerService {
     List<CustomerModel> findAll();
 
-    List<CustomerModel> search (String term);
+    List<CustomerModel> search(String term);
 
-    CustomerModel findById (Long id);
+    CustomerModel findById(Long id);
 
-    boolean update (CustomerModel customer);
+    boolean update(CustomerModel customer);
 
-    void save (CustomerModel customer);
+    void save(CustomerModel customer);
 
-    boolean delete (Long id);
+    boolean delete(Long id);
 }

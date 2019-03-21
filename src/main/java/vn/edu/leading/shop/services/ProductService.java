@@ -8,13 +8,13 @@ import java.util.List;
 public interface ProductService {
     List<ProductModel> findAll();
 
-    List<ProductModel> search (String term);
+    List<ProductModel> search(String term);
 
-    ProductModel findById (Long id);
+    ProductModel findById(Long id);
 
-    boolean update (ProductModel product);
+    boolean update(ProductModel product);
 
-    void save (ProductModel product);
+    void save(ProductModel product);
 
-    boolean delete (Long id);
+    boolean delete(Long id);
 }

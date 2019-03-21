@@ -7,13 +7,13 @@ import java.util.List;
 public interface SupplierService {
     List<SupplierModel> findAll();
 
-    List<SupplierModel> search (String term);
+    List<SupplierModel> search(String term);
 
-    SupplierModel findById (Long id);
+    SupplierModel findById(Long id);
 
-    boolean update (SupplierModel supplier);
+    boolean update(SupplierModel supplier);
 
-    void save (SupplierModel supplier);
+    void save(SupplierModel supplier);
 
-    boolean delete (Long id);
+    boolean delete(Long id);
 }

@@ -1,6 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.SupplierModel;
 import vn.edu.leading.shop.repositories.SupplierRepository;
@@ -8,8 +7,7 @@ import vn.edu.leading.shop.repositories.SupplierRepository;
 import java.util.List;
 
 @Service
-
-public class SupplierServicelmpl  implements SupplierService {
+public class SupplierServicelmpl implements SupplierService {
     private final SupplierRepository supplierRepository;
 
     public SupplierServicelmpl(SupplierRepository supplierRepository) {
@@ -48,7 +46,7 @@ public class SupplierServicelmpl  implements SupplierService {
     @Override
     public boolean delete(Long id) {
         SupplierModel supplierModel = supplierRepository.findById(id).orElse(null);
-        if(supplierModel==null)
+        if (supplierModel == null)
             return false;
         supplierRepository.delete(supplierModel);
         return true;

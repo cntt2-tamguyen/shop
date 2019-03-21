@@ -1,6 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.OrderDetailModel;
 import vn.edu.leading.shop.repositories.OrderDetailRepository;
@@ -8,8 +7,7 @@ import vn.edu.leading.shop.repositories.OrderDetailRepository;
 import java.util.List;
 
 @Service
-
-public class OrderDetailServicelmpl implements OrderDetailService{
+public class OrderDetailServicelmpl implements OrderDetailService {
     private final OrderDetailRepository orderDetailRepository;
 
     public OrderDetailServicelmpl(OrderDetailRepository orderDetailRepository) {
@@ -48,7 +46,7 @@ public class OrderDetailServicelmpl implements OrderDetailService{
     @Override
     public boolean delete(Long id) {
         OrderDetailModel orderDetailModel = orderDetailRepository.findById(id).orElse(null);
-        if(orderDetailModel==null)
+        if (orderDetailModel == null)
             return false;
         orderDetailRepository.delete(orderDetailModel);
         return true;

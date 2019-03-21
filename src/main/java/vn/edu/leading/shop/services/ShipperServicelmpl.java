@@ -1,6 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.ShipperModel;
 import vn.edu.leading.shop.repositories.ShipperRepository;
@@ -9,8 +8,7 @@ import java.util.List;
 
 
 @Service
-
-public class ShipperServicelmpl  implements ShipperService {
+public class ShipperServicelmpl implements ShipperService {
     private final ShipperRepository shipperRepository;
 
     public ShipperServicelmpl(ShipperRepository shipperRepository) {
@@ -49,7 +47,7 @@ public class ShipperServicelmpl  implements ShipperService {
     @Override
     public boolean delete(Long id) {
         ShipperModel shipperModel = shipperRepository.findById(id).orElse(null);
-        if(shipperModel==null)
+        if (shipperModel == null)
             return false;
         shipperRepository.delete(shipperModel);
         return true;

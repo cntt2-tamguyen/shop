@@ -1,6 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.ProductModel;
 import vn.edu.leading.shop.repositories.ProductRepository;
@@ -47,7 +46,7 @@ public class ProductServicelmpl implements ProductService {
     @Override
     public boolean delete(Long id) {
         ProductModel productModel = productRepository.findById(id).orElse(null);
-        if(productModel==null)
+        if (productModel == null)
             return false;
         productRepository.delete(productModel);
         return true;

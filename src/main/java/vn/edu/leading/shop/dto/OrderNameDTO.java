@@ -9,6 +9,8 @@ import lombok.*;
 @ToString
 public class OrderNameDTO {
     private String customerName;
+
     private String firstNameEmployee;
+
     private String shipperName;
 }

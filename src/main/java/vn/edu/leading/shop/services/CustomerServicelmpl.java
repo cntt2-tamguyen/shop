@@ -1,6 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.CustomerModel;
 import vn.edu.leading.shop.repositories.CustomerRepository;
@@ -8,11 +7,10 @@ import vn.edu.leading.shop.repositories.CustomerRepository;
 import java.util.List;
 
 @Service
-
 public class CustomerServicelmpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
-    public CustomerServicelmpl(CustomerRepository customerRepository){
+    public CustomerServicelmpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
@@ -48,7 +46,7 @@ public class CustomerServicelmpl implements CustomerService {
     @Override
     public boolean delete(Long id) {
         CustomerModel customerModel = customerRepository.findById(id).orElse(null);
-        if(customerModel==null)
+        if (customerModel == null)
             return false;
         customerRepository.delete(customerModel);
         return true;

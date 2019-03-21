@@ -1,7 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.dto.OrderDetailDTO;
 import vn.edu.leading.shop.dto.OrderNameDTO;
@@ -13,7 +11,6 @@ import java.util.List;
 
 
 @Service
-
 public class OrderServicelmpl implements OrderService {
     private final OrderRepository orderRepository;
     private final CustomerRepository customerRepository;
@@ -65,14 +62,14 @@ public class OrderServicelmpl implements OrderService {
     @Override
     public boolean delete(Long id) {
         OrderModel orderModel = orderRepository.findById(id).orElse(null);
-        if(orderModel==null)
+        if (orderModel == null)
             return false;
         orderRepository.delete(orderModel);
         return true;
     }
 
     @Override
-    public OrderNameDTO getNameCustomer(Long id){
+    public OrderNameDTO getNameCustomer(Long id) {
         OrderModel orderModel = orderRepository.findById(id).get();
         CustomerModel customerModel = customerRepository.findById(orderModel.getCustomerId()).get();
         EmployeeModel employeeModel = employeeRepository.findById(orderModel.getEmployeeId()).get();
@@ -88,13 +85,13 @@ public class OrderServicelmpl implements OrderService {
     public List<OrderDetailDTO> listProduct(Long id) {
         List<OrderDetailDTO> list = new ArrayList<>();
         List<OrderDetailModel> orderDetails = orderDetailRepository.findAllByOrderId(id);
-        for(OrderDetailModel detail : orderDetails){
+        for (OrderDetailModel detail : orderDetails) {
             OrderDetailDTO orderDetailDTO = new OrderDetailDTO();
             ProductModel productModel = productRepository.findById(detail.getProductId()).get();
             orderDetailDTO.setProductName(productModel.getProductName());
             orderDetailDTO.setPrice(productModel.getPrice());
             orderDetailDTO.setQuantity(detail.getQuantity());
-            orderDetailDTO.setSum(productModel.getPrice()*detail.getQuantity());
+            orderDetailDTO.setSum(productModel.getPrice() * detail.getQuantity());
             list.add(orderDetailDTO);
         }
         return list;

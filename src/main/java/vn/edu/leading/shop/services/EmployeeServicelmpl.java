@@ -1,6 +1,5 @@
 package vn.edu.leading.shop.services;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import vn.edu.leading.shop.models.EmployeeModel;
 import vn.edu.leading.shop.repositories.EmployeeRepository;
@@ -9,9 +8,7 @@ import java.util.List;
 
 
 @Service
-public class EmployeeServicelmpl implements EmployeeService{
-
-
+public class EmployeeServicelmpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
 
     public EmployeeServicelmpl(EmployeeRepository employeeRepository) {
@@ -50,7 +47,7 @@ public class EmployeeServicelmpl implements EmployeeService{
     @Override
     public boolean delete(Long id) {
         EmployeeModel employeeModel = employeeRepository.findById(id).orElse(null);
-        if(employeeModel==null)
+        if (employeeModel == null)
             return false;
         employeeRepository.delete(employeeModel);
         return true;
