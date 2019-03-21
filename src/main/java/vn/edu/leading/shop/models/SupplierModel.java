@@ -1,11 +1,14 @@
 package vn.edu.leading.shop.models;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,4 +37,14 @@ public class SupplierModel extends BassModel<SupplierModel> {
     private String country;
 
     private String phone;
+
+    @OneToMany(
+            mappedBy = "supplierModel",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    @Fetch(FetchMode.SELECT)
+    @BatchSize(size = 50)
+    private Set<ProductModel> products =new HashSet<>();
 }

@@ -1,10 +1,9 @@
 package vn.edu.leading.shop.models;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @AllArgsConstructor
@@ -16,13 +15,15 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "shop_order_details")
 public class OrderDetailModel extends BassModel<OrderDetailModel> {
 
-    @NotEmpty
-    @Column(name = "order_id", nullable = false)
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    @BatchSize(size = 50)
+    private OrderModel orderModel;
 
-    @NotEmpty
-    @Column(name = "product_id", nullable = false)
-    private Long productId;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
+    @BatchSize(size = 50)
+    private ProductModel productModel;
 
     private Long quantity;
 }

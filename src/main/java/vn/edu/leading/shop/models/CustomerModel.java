@@ -1,6 +1,7 @@
 package vn.edu.leading.shop.models;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -34,4 +35,14 @@ public class CustomerModel extends BassModel<CustomerModel> {
     private String postalCode;
 
     private String country;
+
+    @OneToMany(
+            mappedBy = "customerModel",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    @Fetch(FetchMode.SELECT)
+    @BatchSize(size = 50)
+    private Set<OrderModel> orders =new HashSet<>();
 }

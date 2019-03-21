@@ -78,9 +78,9 @@ public class OrderServicelmpl implements OrderService {
     @Override
     public OrderNameDTO getNameCustomer(Long id) {
         OrderModel orderModel = orderRepository.findById(id).get();
-        CustomerModel customerModel = customerRepository.findById(orderModel.getCustomerId()).get();
-        EmployeeModel employeeModel = employeeRepository.findById(orderModel.getEmployeeId()).get();
-        ShipperModel shipperModel = shipperRepository.findById(orderModel.getShipperId()).get();
+        CustomerModel customerModel = customerRepository.findById(orderModel.getCustomerModel().getId()).get();
+        EmployeeModel employeeModel = employeeRepository.findById(orderModel.getEmployeeModel().getId()).get();
+        ShipperModel shipperModel = shipperRepository.findById(orderModel.getShipperModel().getId()).get();
         OrderNameDTO orderNameDTO = new OrderNameDTO();
         orderNameDTO.setCustomerName(customerModel.getContactName());
         orderNameDTO.setFirstNameEmployee(employeeModel.getFirstName());
@@ -94,7 +94,7 @@ public class OrderServicelmpl implements OrderService {
         List<OrderDetailModel> orderDetails = orderDetailRepository.findAllByOrderId(id);
         for (OrderDetailModel detail : orderDetails) {
             OrderDetailDTO orderDetailDTO = new OrderDetailDTO();
-            ProductModel productModel = productRepository.findById(detail.getProductId()).get();
+            ProductModel productModel = productRepository.findById(detail.getProductModel().getId()).get();
             orderDetailDTO.setProductName(productModel.getProductName());
             orderDetailDTO.setPrice(productModel.getPrice());
             orderDetailDTO.setQuantity(detail.getQuantity());
