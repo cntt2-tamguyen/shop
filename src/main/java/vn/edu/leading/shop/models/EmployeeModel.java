@@ -1,9 +1,14 @@
 package vn.edu.leading.shop.models;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,23 +17,23 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 @Entity
 @Table(name = "shop_employees")
-public class EmployeeModel extends BassModel<EmployeeModel>{
+public class EmployeeModel extends BassModel<EmployeeModel> {
 
     @NotEmpty
-    @Column (name = "last_name",nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @NotEmpty
-    @Column(name = "first_name",nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
 
-    @Column (name = "birth_date",nullable = false)
+    @Column(name = "birth_date", nullable = false)
     private String birthDate;
 
     private String photo;
 
     private String notes;
-
 }
+
 
