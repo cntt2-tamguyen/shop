@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 @Entity
 @Table(name = "shop_shippers")
-public class ShipperModel extends BassModel<ShipperModel> {
+public class ShipperModel extends BaseModel<ShipperModel> {
 
     @NotEmpty
     @Column(name = "shipper_name", nullable = false)
