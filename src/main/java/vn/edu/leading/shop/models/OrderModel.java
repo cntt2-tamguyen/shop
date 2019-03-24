@@ -16,7 +16,7 @@ import java.util.Set;
 //@ToString
 @Entity
 @Table(name = "shop_orders")
-public class OrderModel extends BassModel<OrderModel> {
+public class OrderModel extends BaseModel<OrderModel> {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)

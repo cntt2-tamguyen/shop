@@ -4,7 +4,6 @@ import lombok.*;
 import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 //@ToString
 @Entity
 @Table(name = "shop_order_details")
-public class OrderDetailModel extends BassModel<OrderDetailModel> {
+public class OrderDetailModel extends BaseModel<OrderDetailModel> {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "order_id", nullable = false)

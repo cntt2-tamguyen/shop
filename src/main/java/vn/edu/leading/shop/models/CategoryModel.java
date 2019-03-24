@@ -17,7 +17,7 @@ import java.util.Set;
 //@ToString
 @Entity
 @Table(name = "shop_categories")
-public class CategoryModel extends BassModel<CategoryModel>{
+public class CategoryModel extends BaseModel<CategoryModel> {
 
     @NotEmpty
     @Column(name = "category_name")
