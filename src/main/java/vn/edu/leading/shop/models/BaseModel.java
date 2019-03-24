@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class BassModel<T extends BassModel<T>>  implements Persistable, Serializable {
+public class BaseModel<T extends BaseModel<T>>  implements Persistable, Serializable {
 
     private static final long serialVersionUID = 1L;
 

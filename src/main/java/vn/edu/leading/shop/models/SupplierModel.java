@@ -13,7 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 @Table(name = "shop_suppliers")
 
-public class SupplierModel extends BassModel<SupplierModel>{
+public class SupplierModel extends BaseModel<SupplierModel> {
     @NotEmpty
     @Column(name = "supplier_name",nullable = false)
     private String supplierName;

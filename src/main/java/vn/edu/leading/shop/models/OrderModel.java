@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @ToString
 @Table (name = "shop_orders")
-public class OrderModel extends BassModel<OrderModel>{
+public class OrderModel extends BaseModel<OrderModel> {
 
     @NotEmpty
     @Column(name = "customer_id",nullable = false)
