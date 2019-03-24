@@ -71,7 +71,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("orders/{id}/print")
+    @GetMapping("orders/{id}")
     public String printf (@PathVariable("id") Long id, Model model){
         model.addAttribute("orderDetails",orderService.findById(id).getOrderDetails());
         return "orderDetails/list";
