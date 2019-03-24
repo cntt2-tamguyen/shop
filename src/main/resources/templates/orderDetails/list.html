@@ -45,6 +45,7 @@
                         <th>OrderID</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
+                        <th>Supplier Name</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -54,6 +55,7 @@
                         <td th:text="${orderDetail.getOrderModel().getId()}"></td>
                         <td th:text="${orderDetail.getProductModel().productName}"></td>
                         <td th:text="${orderDetail.quantity}"></td>
+                        <td th:text="${orderDetail.getProductModel().getSupplierModel().getSupplierName()}"></td>
                         <td>
                             <a class="mr-sm-2 text-primary" href="#"
                                th:href="@{/orderDetails/{id}/edit(id=${orderDetail.id})}">
