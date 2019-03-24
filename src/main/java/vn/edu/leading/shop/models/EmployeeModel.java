@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+//@ToString
 @Entity
 @Table(name = "shop_employees")
 public class EmployeeModel extends BassModel<EmployeeModel> {

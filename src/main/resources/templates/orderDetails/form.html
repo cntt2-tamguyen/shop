@@ -16,14 +16,14 @@
 
             <div class="form-group">
                 <input class="form-control" placeholder="Order ID" th:errorclass="field-error"
-                       th:field="*{orderId}" type="text"/>
-                <em th:errors="*{orderId}" th:if="${#fields.hasErrors('orderId')}"></em>
+                       th:field="*{orderModel}" type="text"/>
+                <em th:errors="*{orderModel}" th:if="${#fields.hasErrors('orderModel')}"></em>
             </div>
 
             <div class="form-group">
                 <input class="form-control" placeholder="Product ID" th:errorclass="field-error"
-                       th:field="*{productId}" type="email"/>
-                <em th:errors="*{productId}" th:if="${#fields.hasErrors('productId')}"></em>
+                       th:field="*{productModel}" type="email"/>
+                <em th:errors="*{productModel}" th:if="${#fields.hasErrors('productModel')}"></em>
             </div>
 
             <div class="form-group">

@@ -21,14 +21,14 @@
 
             <div class="form-group">
                 <input class="form-control" placeholder="Supplier ID" th:errorclass="field-error"
-                       th:field="*{supplierId}" type="email"/>
-                <em th:errors="*{supplierId}" th:if="${#fields.hasErrors('supperlierId')}"></em>
+                       th:field="*{supplierModel}" type="email"/>
+                <em th:errors="*{supplierModel}" th:if="${#fields.hasErrors('supplierModel')}"></em>
             </div>
 
             <div class="form-group">
                 <input class="form-control" placeholder="Category ID" th:errorclass="field-error"
-                       th:field="*{categoryId}" type="email"/>
-                <em th:errors="*{categoryId}" th:if="${#fields.hasErrors('categoryId')}"></em>
+                       th:field="*{categoryModel}" type="email"/>
+                <em th:errors="*{categoryModel}" th:if="${#fields.hasErrors('categoryModel')}"></em>
             </div>
 
             <div class="form-group">

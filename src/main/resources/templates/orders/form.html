@@ -15,14 +15,14 @@
 
             <div class="form-group">
                 <input class="form-control" placeholder="CustomerID" th:errorclass="field-error"
-                       th:field="*{customerId}" type="text"/>
-                <em th:errors="*{customerId}" th:if="${#fields.hasErrors('customerId')}"></em>
+                       th:field="*{customerModel}" type="text"/>
+                <em th:errors="*{customerModel}" th:if="${#fields.hasErrors('customerModel')}"></em>
             </div>
 
             <div class="form-group">
                 <input class="form-control" placeholder="EmployeeID" th:errorclass="field-error"
-                       th:field="*{employeeId}" type="email"/>
-                <em th:errors="*{employeeId}" th:if="${#fields.hasErrors('employeeId')}"></em>
+                       th:field="*{employeeModel}" type="email"/>
+                <em th:errors="*{employeeModel}" th:if="${#fields.hasErrors('employeeModel')}"></em>
             </div>
 
             <div class="form-group">
@@ -32,8 +32,8 @@
 
             <div class="form-group">
                 <input class="form-control" placeholder="ShipperID" th:errorclass="field-error"
-                       th:field="*{shipperId}" type="email"/>
-                <em th:errors="*{shipperId}" th:if="${#fields.hasErrors('shipperId')}"></em>
+                       th:field="*{shipperModel}" type="email"/>
+                <em th:errors="*{shipperModel}" th:if="${#fields.hasErrors('shipperModel')}"></em>
             </div>
 
             <div class="form-group">

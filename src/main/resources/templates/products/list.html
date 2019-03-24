@@ -43,8 +43,8 @@
                     <tr>
                         <th>#</th>
                         <th>ProductName</th>
-                        <th>SupplierID</th>
-                        <th>CategoryID</th>
+                        <th>Supplier Name</th>
+                        <th>Category Name</th>
                         <th>Unit</th>
                         <th>Price</th>
                         <th>Action</th>
@@ -54,8 +54,8 @@
                     <tr th:each="product,iterStat:${products}">
                         <th scope="row" th:text="${iterStat.count}"></th>
                         <td th:text="${product.productName}"></td>
-                        <td th:text="${product.supplierId}"></td>
-                        <td th:text="${product.categoryId}"></td>
+                        <td th:text="${product.getSupplierModel().supplierName}"></td>
+                        <td th:text="${product.getCategoryModel().categoryName}"></td>
                         <td th:text="${product.unit}"></td>
                         <td th:text="${product.price}"></td>
                         <td>

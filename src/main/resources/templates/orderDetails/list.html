@@ -43,7 +43,7 @@
                     <tr>
                         <th>#</th>
                         <th>OrderID</th>
-                        <th>ProductID</th>
+                        <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Action</th>
                     </tr>
@@ -51,8 +51,8 @@
                     <tbody>
                     <tr th:each="orderDetail,iterStat:${orderDetails}">
                         <th scope="row" th:text="${iterStat.count}"></th>
-                        <td th:text="${orderDetail.orderId}"></td>
-                        <td th:text="${orderDetail.productId}"></td>
+                        <td th:text="${orderDetail.getOrderModel().getId()}"></td>
+                        <td th:text="${orderDetail.getProductModel().productName}"></td>
                         <td th:text="${orderDetail.quantity}"></td>
                         <td>
                             <a class="mr-sm-2 text-primary" href="#"

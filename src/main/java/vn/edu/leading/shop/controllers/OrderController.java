@@ -70,11 +70,4 @@ public class OrderController {
             return "redirect:/orders";
         }
     }
-
-    @GetMapping("/orders/{id}/print")
-    public String print(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("name", orderService.getNameCustomer(id));
-        model.addAttribute("list", orderService.listProduct(id));
-        return "orders/print";
-    }
 }
