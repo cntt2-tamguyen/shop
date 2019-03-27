@@ -31,6 +31,21 @@
             </button>
         </div>
 
+        <div class="col-12 alert" role="alert" th:if="${customerName}">
+            <span> Customer Name: </span>
+            <span th:text="${customerName}"></span>
+        </div>
+
+        <div class="col-12 alert" role="alert" th:if="${employeeName}">
+            <span> Employee Name: </span>
+            <span th:text="${employeeName}"></span>
+        </div>
+
+        <div class="col-12 alert" role="alert" th:if="${shipperName}">
+            <span> Shipper Name: </span>
+            <span th:text="${shipperName}"></span>
+        </div>
+
         <th:block th:if="${#lists.isEmpty(orderDetails)}">
             <h5>No orderDetails</h5>
         </th:block>
