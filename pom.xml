@@ -50,7 +50,12 @@
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.5</version>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -66,6 +71,30 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-core</artifactId>
+			<version>3.0.11.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<!-- Add for SB Admin -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars/startbootstrap-sb-admin-2 -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>startbootstrap-sb-admin-2</artifactId>
+			<version>4.0.2</version>
+		</dependency>
+
+		<!-- Add for SB Admin -->
+
 	</dependencies>
 
 	<!-- Add config liquibase -->
@@ -96,7 +125,9 @@
 						<defaultSchemaName></defaultSchemaName>
 						<username>root</username>
 						<password></password>
-						<referenceUrl>hibernate:spring:vn.edu.leading.shop.models?dialect=org.hibernate.dialect.MySQL5Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
+						<referenceUrl>
+							hibernate:spring:vn.edu.leading.shop.models?dialect=org.hibernate.dialect.MySQL5InnoDBDialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+						</referenceUrl>
 						<verbose>true</verbose>
 						<logging>debug</logging>
 						<diffExcludeObjects>oauth_access_token, oauth_approvals, oauth_client_details,
@@ -128,6 +159,32 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<!-- Profile config -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
+	<!-- Add config liquibase -->
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>heroku</id>
+			<properties>
+				<spring.profiles.active>heroku</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>

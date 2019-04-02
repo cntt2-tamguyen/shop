@@ -52,13 +52,13 @@
                     <tbody>
                     <tr th:each="order,iterStat:${orders}">
                         <td>
-                            <a class="mr-sm-2 text-primary" href="#" th:href="@{/orders/{id}(id=${order.id})}"
-                               th:text="${iterStat.count}"/>
+                            <a href="#" th:href="@{/orders/{id}(id=${order.id})}" th:text="${iterStat.count}">
+                            </a>
                         </td>
                         <td th:text="${order.getCustomerModel().customerName}"></td>
-                        <td th:text="${order.getEmployeeModel().firstName}"></td>
+                        <td th:text="${order.getEmployeeModel().getFirstName()}"></td>
                         <td th:text="${order.orderDate}"></td>
-                        <td th:text="${order.getShipperModel().shipperName}"></td>
+                        <td th:text="${order.getShipperModel().getShipperName()}"></td>
 
                         <td>
                             <a class="mr-sm-2 text-primary" href="#" th:href="@{/orders/{id}/edit(id=${order.id})}">

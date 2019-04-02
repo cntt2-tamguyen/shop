@@ -1,0 +1,37 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Admin (generated)" id="1554171556164-1">
+        <createTable tableName="shop_role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_rolePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554171556164-2">
+        <createTable tableName="shop_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_userPK"/>
+            </column>
+            <column name="enabled" type="BIT"/>
+            <column name="encryted_password" type="VARCHAR(255)"/>
+            <column name="user_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554171556164-3">
+        <createTable tableName="shop_user_role">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554171556164-4">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="shop_user_role" constraintName="FK838c62nlateeftot6uug22t1s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="shop_user"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554171556164-5">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="shop_user_role" constraintName="FKc2tubjuawo9ymf3na04640qak" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="shop_role"/>
+    </changeSet>
+</databaseChangeLog>

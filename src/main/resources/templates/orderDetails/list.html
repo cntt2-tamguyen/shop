@@ -31,21 +31,6 @@
             </button>
         </div>
 
-        <div class="col-12 alert" role="alert" th:if="${customerName}">
-            <span> Customer Name: </span>
-            <span th:text="${customerName}"></span>
-        </div>
-
-        <div class="col-12 alert" role="alert" th:if="${employeeName}">
-            <span> Employee Name: </span>
-            <span th:text="${employeeName}"></span>
-        </div>
-
-        <div class="col-12 alert" role="alert" th:if="${shipperName}">
-            <span> Shipper Name: </span>
-            <span th:text="${shipperName}"></span>
-        </div>
-
         <th:block th:if="${#lists.isEmpty(orderDetails)}">
             <h5>No orderDetails</h5>
         </th:block>
@@ -57,26 +42,28 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>OrderID</th>
+                        <th>Customer Name</th>
                         <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Supplier Name</th>
+                        <th>Price</th>
+                        <th>Quantities</th>
+                        <th>Sum</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="orderDetail,iterStat:${orderDetails}">
+                    <tr th:each="order,iterStat:${orderDetails}">
                         <th scope="row" th:text="${iterStat.count}"></th>
-                        <td th:text="${orderDetail.getOrderModel().getId()}"></td>
-                        <td th:text="${orderDetail.getProductModel().productName}"></td>
-                        <td th:text="${orderDetail.quantity}"></td>
-                        <td th:text="${orderDetail.getProductModel().getSupplierModel().getSupplierName()}"></td>
+                        <td th:text="${order.getOrderModel().getCustomerModel().getCustomerName()}"></td>
+                        <td th:text="${order.getProductModel().getProductName()}"></td>
+                        <td th:text="'$'+${order.getProductModel().getPrice()}"></td>
+                        <td th:text="${order.quantity}"></td>
+                        <td th:text="'$'+${order.getProductModel().getPrice() * order.quantity}"></td>
                         <td>
                             <a class="mr-sm-2 text-primary" href="#"
-                               th:href="@{/orderDetails/{id}/edit(id=${orderDetail.id})}">
+                               th:href="@{/orderDetails/{id}/edit(id=${order.id})}">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <a class="text-dange" href="#" th:href="@{/orderDetails/{id}/delete(id=${orderDetail.id})}">
+                            <a class="text-dange" href="#" th:href="@{/orderDetails/{id}/delete(id=${order.id})}">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>
