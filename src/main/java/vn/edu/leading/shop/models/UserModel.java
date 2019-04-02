@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +20,13 @@ import java.util.List;
 @Table(name = "shop_user")
 public class UserModel extends BaseModel<UserModel>{
 
+    @NotNull
+    @Column(nullable = false)
     private String username;
 
+    @NotNull
+    @Column(nullable = false)
     private String password;
-
-    Boolean enabled;
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
