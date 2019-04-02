@@ -18,9 +18,9 @@ import java.util.List;
 @Table(name = "shop_user")
 public class UserModel extends BaseModel<UserModel>{
 
-    String userName;
+    private String username;
 
-    String encrytedPassword;
+    private String password;
 
     Boolean enabled;
 
