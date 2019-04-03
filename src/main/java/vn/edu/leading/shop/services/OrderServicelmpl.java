@@ -1,10 +1,9 @@
 package vn.edu.leading.shop.services;
 
 import org.springframework.stereotype.Service;
-import vn.edu.leading.shop.models.*;
-import vn.edu.leading.shop.repositories.*;
+import vn.edu.leading.shop.models.OrderModel;
+import vn.edu.leading.shop.repositories.OrderRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
