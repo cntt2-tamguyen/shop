@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 //@ToString
 @Entity
-@Table(name = "shop_user")
+@Table(name = "shop_users")
 public class UserModel extends BaseModel<UserModel>{
 
     @NotNull

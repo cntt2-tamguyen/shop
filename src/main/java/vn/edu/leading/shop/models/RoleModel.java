@@ -16,13 +16,10 @@ import java.util.List;
 @Setter
 //@ToString
 @Entity
-@Table(name = "shop_role")
+@Table(name = "shop_roles")
 public class RoleModel extends BaseModel<RoleModel>{
 
     @NotNull
     @Column(nullable = false)
     private String name;
-
-    @ManyToMany(mappedBy = "roleModels")
-    private List<UserModel> userModels = new ArrayList<>();
 }
