@@ -7,11 +7,11 @@ import vn.edu.leading.shop.repositories.ProductRepository;
 import java.util.List;
 
 @Service
-public class ProductServicelmpl implements ProductService {
+public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
-    public ProductServicelmpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 

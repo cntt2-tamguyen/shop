@@ -8,11 +8,11 @@ import java.util.List;
 
 
 @Service
-public class ShipperServicelmpl implements ShipperService {
+public class ShipperServiceImpl implements ShipperService {
 
     private final ShipperRepository shipperRepository;
 
-    public ShipperServicelmpl(ShipperRepository shipperRepository) {
+    public ShipperServiceImpl(ShipperRepository shipperRepository) {
         this.shipperRepository = shipperRepository;
     }
 

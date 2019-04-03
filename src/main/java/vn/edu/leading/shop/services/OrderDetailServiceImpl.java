@@ -7,11 +7,11 @@ import vn.edu.leading.shop.repositories.OrderDetailRepository;
 import java.util.List;
 
 @Service
-public class OrderDetailServicelmpl implements OrderDetailService {
+public class OrderDetailServiceImpl implements OrderDetailService {
 
     private final OrderDetailRepository orderDetailRepository;
 
-    public OrderDetailServicelmpl(OrderDetailRepository orderDetailRepository) {
+    public OrderDetailServiceImpl(OrderDetailRepository orderDetailRepository) {
         this.orderDetailRepository = orderDetailRepository;
     }
 

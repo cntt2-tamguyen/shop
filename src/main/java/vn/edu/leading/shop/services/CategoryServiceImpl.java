@@ -7,11 +7,11 @@ import vn.edu.leading.shop.repositories.CategoryRepository;
 import java.util.List;
 
 @Service
-public class CategoryServicelmpl implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    public CategoryServicelmpl(CategoryRepository categoryRepository) {
+    public CategoryServiceImpl(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 

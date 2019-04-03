@@ -7,11 +7,11 @@ import vn.edu.leading.shop.repositories.SupplierRepository;
 import java.util.List;
 
 @Service
-public class SupplierServicelmpl implements SupplierService {
+public class SupplierServiceImpl implements SupplierService {
 
     private final SupplierRepository supplierRepository;
 
-    public SupplierServicelmpl(SupplierRepository supplierRepository) {
+    public SupplierServiceImpl(SupplierRepository supplierRepository) {
         this.supplierRepository = supplierRepository;
     }
 

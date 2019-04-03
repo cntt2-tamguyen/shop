@@ -7,11 +7,11 @@ import vn.edu.leading.shop.repositories.UserRepository;
 import java.util.List;
 
 @Service
-public class UserServicelmpl implements UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    public UserServicelmpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
