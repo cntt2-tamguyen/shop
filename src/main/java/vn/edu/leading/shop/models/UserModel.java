@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,10 +17,10 @@ import java.util.List;
 //@ToString
 @Entity
 @Table(name = "shop_users")
-public class UserModel extends BaseModel<UserModel>{
+public class UserModel extends BaseModel<UserModel> {
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @NotNull
@@ -36,5 +35,5 @@ public class UserModel extends BaseModel<UserModel>{
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private List<RoleModel> roleModels = new ArrayList<>();
+    private Set<RoleModel> roleModels = new HashSet<>();
 }

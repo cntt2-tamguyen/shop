@@ -20,6 +20,6 @@ import java.util.List;
 public class RoleModel extends BaseModel<RoleModel>{
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 }

@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="Admin (generated)" id="1554294166619-1">
+    <changeSet author="Admin (generated)" id="1554295860286-1">
         <createTable tableName="shop_roles">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="shop_rolesPK"/>
@@ -10,7 +10,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Admin (generated)" id="1554294166619-2">
+    <changeSet author="Admin (generated)" id="1554295860286-2">
         <createTable tableName="shop_user_role">
             <column name="user_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -20,7 +20,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Admin (generated)" id="1554294166619-3">
+    <changeSet author="Admin (generated)" id="1554295860286-3">
         <createTable tableName="shop_users">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="shop_usersPK"/>
@@ -33,10 +33,19 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Admin (generated)" id="1554294166619-4">
+    <changeSet author="Admin (generated)" id="1554295860286-4">
+        <addPrimaryKey columnNames="user_id, role_id" tableName="shop_user_role"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554295860286-5">
+        <addUniqueConstraint columnNames="name" constraintName="UC_SHOP_ROLESNAME_COL" tableName="shop_roles"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554295860286-6">
+        <addUniqueConstraint columnNames="username" constraintName="UC_SHOP_USERSUSERNAME_COL" tableName="shop_users"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554295860286-7">
         <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="shop_user_role" constraintName="FK4mprm6i4tjjh0bxr3hbjwan70" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="shop_roles"/>
     </changeSet>
-    <changeSet author="Admin (generated)" id="1554294166619-5">
+    <changeSet author="Admin (generated)" id="1554295860286-8">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="shop_user_role" constraintName="FKt2ksjwrouqkhmwalkcuuf0w8f" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="shop_users"/>
     </changeSet>
 </databaseChangeLog>
