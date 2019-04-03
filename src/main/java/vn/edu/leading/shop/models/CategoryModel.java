@@ -1,6 +1,9 @@
 package vn.edu.leading.shop.models;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -33,5 +36,5 @@ public class CategoryModel extends BaseModel<CategoryModel> {
     )
     @Fetch(FetchMode.SELECT)
     @BatchSize(size = 50)
-    private Set<ProductModel> products =new HashSet<>();
+    private Set<ProductModel> products = new HashSet<>();
 }

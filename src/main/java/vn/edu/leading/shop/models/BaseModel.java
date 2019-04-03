@@ -6,13 +6,13 @@ import org.springframework.data.domain.Persistable;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class BaseModel<T extends BaseModel<T>>  implements Persistable, Serializable {
+@MappedSuperclass
+public class BaseModel<T extends BaseModel<T>> implements Persistable, Serializable {
 
     private static final long serialVersionUID = 1L;
 
