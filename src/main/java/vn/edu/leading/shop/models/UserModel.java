@@ -27,12 +27,10 @@ public class UserModel extends BaseModel<UserModel> {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "shop_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
+
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<RoleModel> roleModels = new HashSet<>();

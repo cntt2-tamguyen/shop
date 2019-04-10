@@ -1,6 +1,7 @@
 package vn.edu.leading.shop.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserDetailsService userDetailsService;
 
-    public WebSecurityConfig(UserDetailsService userDetailsService) {
+    public WebSecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
@@ -34,10 +35,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").anonymous()
                 .antMatchers("/forgot-password").anonymous()
                 .antMatchers("/webjars/**").permitAll()
-                .antMatchers("/admin/**", "/").hasRole("ADMIN")
-                .and().formLogin().loginPage("/login").permitAll()
-                // Warning: The following allows the logout link to be accessed via GET instead of POST, which is generally NOT recommended
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout");
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error")//
+                .permitAll()
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .clearAuthentication(true)
+                .permitAll();
     }
 
     @Autowired

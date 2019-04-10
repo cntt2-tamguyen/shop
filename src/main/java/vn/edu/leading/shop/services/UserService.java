@@ -17,4 +17,6 @@ public interface UserService {
     void save(UserModel user);
 
     boolean delete(Long id);
+
+    void register(UserModel userModel) throws Exception;
 }
