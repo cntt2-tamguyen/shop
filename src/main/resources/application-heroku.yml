@@ -1,6 +1,8 @@
 spring:
     datasource:
         url: jdbc:${JAWSDB_URL}
+        username: ''
+        password: ''
     jpa:
         hibernate:
             ddl-auto: none
