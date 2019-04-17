@@ -1,0 +1,53 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Admin (generated)" id="1555473795582-1">
+        <addColumn tableName="shop_users">
+            <column name="activated" type="bit">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-2">
+        <addColumn tableName="shop_users">
+            <column name="activation_key" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-3">
+        <addColumn tableName="shop_users">
+            <column name="email" type="varchar(254)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-4">
+        <addColumn tableName="shop_users">
+            <column name="first_name" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-5">
+        <addColumn tableName="shop_users">
+            <column name="image_url" type="varchar(256)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-6">
+        <addColumn tableName="shop_users">
+            <column name="lang_key" type="varchar(6)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-7">
+        <addColumn tableName="shop_users">
+            <column name="last_name" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-8">
+        <addColumn tableName="shop_users">
+            <column name="reset_date" type="tinyblob"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-9">
+        <addColumn tableName="shop_users">
+            <column name="reset_key" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1555473795582-10">
+        <addUniqueConstraint columnNames="email" constraintName="UC_SHOP_USERSEMAIL_COL" tableName="shop_users"/>
+    </changeSet>
+</databaseChangeLog>
