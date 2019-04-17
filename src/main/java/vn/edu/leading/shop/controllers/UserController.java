@@ -15,16 +15,10 @@ public class UserController {
 
     private final UserService userService;
 
-    private final RoleRepository roleRepository;
-
-    private final PasswordEncoder passwordEncoder;
-
     private final MailService mailService;
 
-    public UserController(UserService userService, RoleRepository roleRepository, PasswordEncoder passwordEncoder, MailService mailService) {
+    public UserController(UserService userService, MailService mailService) {
         this.userService = userService;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
         this.mailService = mailService;
     }
 
