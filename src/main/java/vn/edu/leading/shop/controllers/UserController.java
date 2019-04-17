@@ -1,10 +1,8 @@
 package vn.edu.leading.shop.controllers;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import vn.edu.leading.shop.models.UserModel;
-import vn.edu.leading.shop.repositories.RoleRepository;
 import vn.edu.leading.shop.services.MailService;
 import vn.edu.leading.shop.services.UserService;
 
