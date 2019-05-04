@@ -14,7 +14,7 @@ public interface CategoryService {
 
     boolean update(CategoryModel category);
 
-    void save(CategoryModel category);
+    CategoryModel save(CategoryModel category);
 
     boolean delete(Long id);
 }

@@ -5,6 +5,7 @@ import vn.edu.leading.shop.models.SupplierModel;
 import vn.edu.leading.shop.repositories.SupplierRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
@@ -26,8 +27,8 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public SupplierModel findById(Long id) {
-        return supplierRepository.findById(id).get();
+    public Optional<SupplierModel> findById(Long id) {
+        return supplierRepository.findById(id);
     }
 
     @Override

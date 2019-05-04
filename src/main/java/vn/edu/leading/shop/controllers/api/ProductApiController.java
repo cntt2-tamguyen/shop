@@ -2,62 +2,51 @@ package vn.edu.leading.shop.controllers.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.*;
+import vn.edu.leading.shop.dto.ProductDTO;
+import vn.edu.leading.shop.models.CategoryModel;
 import vn.edu.leading.shop.models.ProductModel;
+import vn.edu.leading.shop.models.SupplierModel;
+import vn.edu.leading.shop.services.CategoryService;
 import vn.edu.leading.shop.services.ProductService;
+import vn.edu.leading.shop.services.SupplierService;
 
-import javax.validation.Valid;
+import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/v2")
 public class ProductApiController {
 
     private final ProductService productService;
+    private final SupplierService supplierService;
+    private final CategoryService categoryService;
 
-    public ProductApiController(ProductService productService) {
+    public ProductApiController(ProductService productService, SupplierService supplierService, CategoryService categoryService) {
         this.productService = productService;
+        this.supplierService = supplierService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/products")
-    public ResponseEntity<?> list() {
-        return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<ProductModel>> list() {
+        return new ResponseEntity(productService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/products/add")
-    public ResponseEntity<?>  add() {
-        return new ResponseEntity<>( new ProductModel(), HttpStatus.OK);
-    }
-
-    @GetMapping("/products/{id}/edit")
-    public ResponseEntity<?> edit(@PathVariable("id") Long id){
-        return new ResponseEntity<>( productService.findById(id), HttpStatus.OK);
-    }
-
-//    @PostMapping("/products/save")
-//    public ResponseEntity<?>  save(@Valid ProductModel product, BindingResult result, RedirectAttributes redirect) {
-//        if (result.hasErrors()) {
-//            return "products/form";
-//        }
-//        productService.save(product);
-//        redirect.addFlashAttribute("successMessage", "Saved product successfully!");
-//        return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
-//    }
-
-    @GetMapping("/products/{id}/delete")
-    public ResponseEntity<?> delete(@PathVariable Long id, RedirectAttributes redirect) {
-        if (productService.delete(id)) {
-            redirect.addFlashAttribute("successMessage", "Deleted product successfully!");
-            return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
-        } else {
-            redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
+    @PostMapping(value = "/products", produces = "application/json")
+    public ResponseEntity save(@RequestBody ProductDTO dto) {
+        SupplierModel supplierModel = supplierService.findById(dto.getSupplierId()).orElseThrow(() -> new UsernameNotFoundException("supplierModel null"));
+        CategoryModel categoryModel = categoryService.findById(dto.getCategoryId());
+        if (categoryModel == null) {
+            throw new UsernameNotFoundException("categoryModel null");
         }
+        ProductModel productModel = new ProductModel();
+        productModel.setPrice(dto.getPrice());
+        productModel.setUnit(dto.getUnit());
+        productModel.setProductName(dto.getProductName());
+        productModel.setSupplierModel(supplierModel);
+        productModel.setCategoryModel(categoryModel);
+
+        return new ResponseEntity(productService.save(productModel), HttpStatus.OK);
     }
 }
