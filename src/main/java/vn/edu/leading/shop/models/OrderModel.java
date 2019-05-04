@@ -1,5 +1,6 @@
 package vn.edu.leading.shop.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,11 +25,13 @@ public class OrderModel extends BaseModel<OrderModel> {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     @BatchSize(size = 50)
+    @JsonManagedReference
     private CustomerModel customerModel;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
     @BatchSize(size = 50)
+    @JsonManagedReference
     private EmployeeModel employeeModel;
 
     @Column(name = "order_date")
@@ -37,6 +40,7 @@ public class OrderModel extends BaseModel<OrderModel> {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "shipper_id", nullable = false)
     @BatchSize(size = 50)
+    @JsonManagedReference
     private ShipperModel shipperModel;
 
     @OneToMany(

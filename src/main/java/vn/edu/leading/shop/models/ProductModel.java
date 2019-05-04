@@ -1,9 +1,12 @@
 package vn.edu.leading.shop.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.jbosslog.JBossLog;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -29,11 +32,13 @@ public class ProductModel extends BaseModel<ProductModel> {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "supplier_id", nullable = false)
     @BatchSize(size = 50)
+    @JsonManagedReference
     private SupplierModel supplierModel;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     @BatchSize(size = 50)
+    @JsonManagedReference
     private CategoryModel categoryModel;
 
     private String unit;
@@ -48,5 +53,6 @@ public class ProductModel extends BaseModel<ProductModel> {
     )
     @Fetch(FetchMode.SELECT)
     @BatchSize(size = 50)
+    @JsonBackReference
     private Set<OrderDetailModel> orderDetails = new HashSet<>();
 }

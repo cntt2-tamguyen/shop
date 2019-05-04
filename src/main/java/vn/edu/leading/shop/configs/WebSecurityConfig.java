@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").anonymous()
                 .antMatchers("/forgot-password").anonymous()
                 .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/api/**").anonymous()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
