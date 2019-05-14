@@ -23,10 +23,10 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/categories")
+    @GetMapping("admin/categories")
     public String list(Model model) {
         model.addAttribute("categories", categoryService.findAll());
-        return "categories/list";
+        return "admin/pages/categories";
     }
 
     @GetMapping("categories/search")
@@ -57,17 +57,17 @@ public class CategoryController {
         }
         categoryService.save(category);
         redirect.addFlashAttribute("successMessage", "Saved category successfully!");
-        return "redirect:/categories";
+        return "redirect:/admin/categories";
     }
 
     @GetMapping("/categories/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (categoryService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted category successfully!");
-            return "redirect:/categories";
+            return "redirect:/admin/categories";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/categories";
+            return "redirect:/admin/categories";
         }
     }
 }

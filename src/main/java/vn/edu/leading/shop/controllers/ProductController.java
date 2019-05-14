@@ -23,16 +23,16 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/products")
+    @GetMapping("/admin/products")
     public String list(Model model) {
         model.addAttribute("products", productService.findAll());
-        return "products/list";
+        return "admin/pages/products";
     }
 
     @GetMapping("products/search")
     public String search(@RequestParam("term") String term, Model model) {
         if (StringUtils.isEmpty(term)) {
-            return "redirect:/products";
+            return "redirect:/admin/products";
         }
         model.addAttribute("products", productService.search(term));
         return "products/list";
@@ -57,17 +57,17 @@ public class ProductController {
         }
         productService.save(product);
         redirect.addFlashAttribute("successMessage", "Saved product successfully!");
-        return "redirect:/products";
+        return "redirect:/admin/products";
     }
 
     @GetMapping("/products/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (productService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted product successfully!");
-            return "redirect:/products";
+            return "redirect:/admin/products";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/products";
+            return "redirect:/admin/products";
         }
     }
 }

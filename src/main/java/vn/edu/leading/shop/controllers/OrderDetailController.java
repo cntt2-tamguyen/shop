@@ -23,16 +23,16 @@ public class OrderDetailController {
         this.orderDetailService = orderDetailService;
     }
 
-    @GetMapping("/orderDetails")
+    @GetMapping("admin/orderDetails")
     public String list(Model model) {
         model.addAttribute("orderDetails", orderDetailService.findAll());
-        return "orderDetails/list";
+        return "admin/pages/orderDetails";
     }
 
     @GetMapping("orderDetails/search")
     public String search(@RequestParam("term") String term, Model model) {
         if (StringUtils.isEmpty(term)) {
-            return "redirect:/orderDetails";
+            return "redirect:/admin/orderDetails";
         }
         model.addAttribute("orderDetails", orderDetailService.search(term));
         return "orderDetails/list";
@@ -57,17 +57,17 @@ public class OrderDetailController {
         }
         orderDetailService.save(orderDetail);
         redirect.addFlashAttribute("successMessage", "Saved orderDetails successfully!");
-        return "redirect:/orderDetails";
+        return "redirect:/admin/orderDetails";
     }
 
     @GetMapping("/orderDetails/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (orderDetailService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted orderDetails successfully!");
-            return "redirect:/orderDetails";
+            return "redirect:/admin/orderDetails";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/orderDetails";
+            return "redirect:/admin/orderDetails";
         }
     }
 }

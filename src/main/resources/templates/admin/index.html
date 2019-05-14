@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head th:replace="admin/adminLayout::head"></head>
 <head>
     <title>Dashboard</title>
@@ -356,5 +358,11 @@
 <!-- Logout Modal-->
 <div th:replace="admin/adminLayout::logoutModal"></div>
 <section th:replace="admin/adminLayout::js"></section>
+<!-- Page level plugins -->
+<script th:src="@{/webjars/startbootstrap-sb-admin-2/4.0.2/vendor/chart.js/Chart.min.js}"></script>
+
+<!-- Page level custom scripts -->
+<script th:src="@{/webjars/startbootstrap-sb-admin-2/4.0.2/js/demo/chart-area-demo.js}"></script>
+<script th:src="@{/webjars/startbootstrap-sb-admin-2/4.0.2/js/demo/chart-pie-demo.js}"></script>
 </body>
 </html>

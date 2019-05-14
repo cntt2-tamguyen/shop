@@ -23,16 +23,16 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/employees")
+    @GetMapping("admin/employees")
     public String list(Model model) {
         model.addAttribute("employees", employeeService.findAll());
-        return "employees/list";
+        return "admin/pages/employees";
     }
 
     @GetMapping("employees/search")
     public String search(@RequestParam("term") String term, Model model) {
         if (StringUtils.isEmpty(term)) {
-            return "redirect:/employees";
+            return "redirect:/admin/employees";
         }
         model.addAttribute("employees", employeeService.search(term));
         return "employees/list";
@@ -57,17 +57,17 @@ public class EmployeeController {
         }
         employeeService.save(employee);
         redirect.addFlashAttribute("successMessage", "Saved employee successfully!");
-        return "redirect:/employees";
+        return "redirect:/admin/employees";
     }
 
     @GetMapping("/employees/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (employeeService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted employee successfully!");
-            return "redirect:/employees";
+            return "redirect:/admin/employees";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/employees";
+            return "redirect:/admin/employees";
         }
     }
 }

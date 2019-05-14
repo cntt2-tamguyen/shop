@@ -23,16 +23,16 @@ public class ShipperController {
         this.shipperService = shipperService;
     }
 
-    @GetMapping("/shippers")
+    @GetMapping("/admin/shippers")
     public String list(Model model) {
         model.addAttribute("shippers", shipperService.findAll());
-        return "shippers/list";
+        return "admin/pages/shippers";
     }
 
     @GetMapping("shippers/search")
     public String search(@RequestParam("term") String term, Model model) {
         if (StringUtils.isEmpty(term)) {
-            return "redirect:/shippers";
+            return "redirect:/admin/shippers";
         }
         model.addAttribute("shippers", shipperService.search(term));
         return "shippers/list";
@@ -57,17 +57,17 @@ public class ShipperController {
         }
         shipperService.save(shipper);
         redirect.addFlashAttribute("successMessage", "Saved shipper successfully!");
-        return "redirect:/shippers";
+        return "redirect:/admin/shippers";
     }
 
     @GetMapping("/shippers/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (shipperService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted shipper successfully!");
-            return "redirect:/shippers";
+            return "redirect:/admin/shippers";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/shippers";
+            return "redirect:/admin/shippers";
         }
     }
 }

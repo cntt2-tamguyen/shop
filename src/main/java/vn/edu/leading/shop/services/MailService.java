@@ -21,6 +21,7 @@ public class MailService {
         this.javaMailSender = javaMailSender;
     }
 
+
     @Async
     public void sendMail(UserModel user) throws MailException {
         // send email

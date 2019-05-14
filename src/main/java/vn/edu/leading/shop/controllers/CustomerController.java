@@ -23,10 +23,10 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers")
+    @GetMapping("admin/customers")
     public String list(Model model) {
         model.addAttribute("customers", customerService.findAll());
-        return "customers/list";
+        return "admin/pages/customers";
     }
 
     @GetMapping("customers/search")
@@ -57,17 +57,17 @@ public class CustomerController {
         }
         customerService.save(customer);
         redirect.addFlashAttribute("successMessage", "Saved customer successfully!");
-        return "redirect:/customers";
+        return "redirect:/admin/customers";
     }
 
     @GetMapping("/customers/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (customerService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted customer successfully!");
-            return "redirect:/customers";
+            return "redirect:/admin/customers";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/customers";
+            return "redirect:/admin/customers";
         }
     }
 }

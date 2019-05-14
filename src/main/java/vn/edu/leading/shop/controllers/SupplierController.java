@@ -23,16 +23,16 @@ public class SupplierController {
         this.supplierService = supplierService;
     }
 
-    @GetMapping("/suppliers")
+    @GetMapping("/admin/suppliers")
     public String list(Model model) {
         model.addAttribute("suppliers", supplierService.findAll());
-        return "suppliers/list";
+        return "admin/pages/suppliers";
     }
 
     @GetMapping("suppliers/search")
     public String search(@RequestParam("term") String term, Model model) {
         if (StringUtils.isEmpty(term)) {
-            return "redirect:/suppliers";
+            return "redirect:/admin/suppliers";
         }
         model.addAttribute("suppliers", supplierService.search(term));
         return "suppliers/list";
@@ -57,17 +57,17 @@ public class SupplierController {
         }
         supplierService.save(supplier);
         redirect.addFlashAttribute("successMessage", "Saved supplier successfully!");
-        return "redirect:/suppliers";
+        return "redirect:/admin/suppliers";
     }
 
     @GetMapping("/suppliers/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (supplierService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted supplier successfully!");
-            return "redirect:/suppliers";
+            return "redirect:/admin/suppliers";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/suppliers";
+            return "redirect:/admin/suppliers";
         }
     }
 }
