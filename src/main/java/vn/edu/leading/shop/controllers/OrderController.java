@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.edu.leading.shop.models.OrderModel;
+import vn.edu.leading.shop.services.CustomerService;
+import vn.edu.leading.shop.services.EmployeeService;
 import vn.edu.leading.shop.services.OrderService;
+import vn.edu.leading.shop.services.ShipperService;
 
 import javax.validation.Valid;
 
@@ -19,13 +22,25 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    public OrderController(OrderService orderService) {
+    private final CustomerService customerService;
+
+    private final EmployeeService employeeService;
+
+    private final ShipperService shipperService;
+
+    public OrderController(OrderService orderService, CustomerService customerService, EmployeeService employeeService, ShipperService shipperService) {
         this.orderService = orderService;
+        this.customerService = customerService;
+        this.employeeService = employeeService;
+        this.shipperService = shipperService;
     }
 
     @GetMapping("/admin/orders")
     public String list(Model model) {
         model.addAttribute("orders", orderService.findAll());
+        model.addAttribute("customers", customerService.findAll());
+        model.addAttribute("employees", employeeService.findAll());
+        model.addAttribute("shippers", shipperService.findAll());
         return "admin/pages/orders";
     }
 
@@ -46,18 +61,18 @@ public class OrderController {
 
     @GetMapping("/orders/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("orderModel", orderService.findById(id));
-        return "orders/form";
+        model.addAttribute(orderService.findById(id));
+        return "admin/pages/orders";
     }
 
-    @PostMapping("/orders/save")
-    public String save(@Valid OrderModel order, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "orders/form";
-        }
+    @PostMapping("admin/orders")
+    public String save(@Valid OrderModel order, Model model) {
         orderService.save(order);
-        redirect.addFlashAttribute("successMessage", "Saved order successfully!");
-        return "redirect:/admin/orders";
+        model.addAttribute("orders", orderService.findAll());
+        model.addAttribute("customers", customerService.findAll());
+        model.addAttribute("employees", employeeService.findAll());
+        model.addAttribute("shippers", shipperService.findAll());
+        return "admin/pages/orders";
     }
 
     @GetMapping("/orders/{id}/delete")

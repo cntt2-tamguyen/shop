@@ -54,21 +54,101 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="order,iterStat:${orderDetails}">
+                                <tr th:each="orderDetail,iterStat:${orderDetails}">
                                     <th scope="row" th:text="${iterStat.count}"></th>
-                                    <td th:text="${order.getOrderModel().getCustomerModel().getCustomerName()}"></td>
-                                    <td th:text="${order.getProductModel().getProductName()}"></td>
-                                    <td th:text="'$'+${order.getProductModel().getPrice()}"></td>
-                                    <td th:text="${order.quantity}"></td>
-                                    <td th:text="'$'+${order.getProductModel().getPrice() * order.quantity}"></td>
+                                    <td th:text="${orderDetail.getOrderModel().getCustomerModel().getCustomerName()}"></td>
+                                    <td th:text="${orderDetail.getProductModel().getProductName()}"></td>
+                                    <td th:text="'$'+${orderDetail.getProductModel().getPrice()}"></td>
+                                    <td th:text="${orderDetail.quantity}"></td>
+                                    <td th:text="'$'+${orderDetail.getProductModel().getPrice() * orderDetail.quantity}"></td>
                                     <td>
-                                        <a class="mr-sm-2 text-primary" href="#"
-                                           th:href="@{/orderDetails/{id}/edit(id=${order.id})}">
+                                        <a class="text-primary" data-toggle="modal"
+                                           th:data-target="'#edit-'+${orderDetail.id}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="text-danger" href="#" th:href="@{/orderDetails/{id}/delete(id=${order.id})}">
+                                        <div aria-hidden="true" aria-labelledby="exampleOrderDetail" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'edit-'+${orderDetail.id}">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleOrderDetail">Edit Order Detail</h5>
+                                                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                                                type="button">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="#" method="post"  th:action="@{/admin/orderDetails}"
+                                                              th:object="${orderDetail}">
+                                                            <h5 class="text-center">Product form</h5>
+
+                                                            <input name="id"  th:value="*{id}" type="hidden" />
+
+                                                            <div class="form-group">
+                                                                <label>Customer</label>
+                                                                <select  name="orderModel">
+                                                                    <option th:each="order,iterStat : ${orders}" th:value="${order.id}" th:text="${order.customerModel.customerName}" th:selected="${order.customerModel.id==orderDetail.orderModel.customerModel.id}"></option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Product</label>
+                                                                <select  name="productModel">
+                                                                    <option th:each="product,iterStat : ${products}" th:value="${product.id}" th:text="${product.productName}" th:selected="${product.id==orderDetail.productModel.id}"></option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Quantity" th:value="*{quantity}"
+                                                                       type="text" name="quantity"/>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                                        type="button">Close
+                                                                </button>
+                                                                <button class="btn btn-primary" type="submit">Save
+                                                                </button>
+                                                            </div>
+                                                            <!--<div class="form-group">-->
+                                                            <!--<button class="btn btn-block btn-primary" type="submit">-->
+                                                            <!--<i class="fa fa-save"></i> Save-->
+                                                            <!--</button>-->
+                                                            <!--</div>-->
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="text-danger" data- data-toggle="modal"
+                                           th:data-target="'#popup-'+${orderDetail.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
+                                        <!-- Modal -->
+                                        <div aria-hidden="true" aria-labelledby="deleteOrderDetail" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'popup-'+${orderDetail.id}">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteOrderDetail">Warning !!!</h5>
+                                                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                                                type="button">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body"
+                                                         th:text="'Do you want delete '+${orderDetail.orderModel.customerModel.customerName}+' ?'">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-dismiss="modal"
+                                                                type="button">No
+                                                        </button>
+                                                        <a class="btn btn-primary"
+                                                           th:href="@{/orderDetails/{id}/delete(id=${orderDetail.id})}">Yes</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>

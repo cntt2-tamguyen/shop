@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.edu.leading.shop.models.CategoryModel;
+import vn.edu.leading.shop.models.CustomerModel;
 import vn.edu.leading.shop.services.CategoryService;
 
 import javax.validation.Valid;
@@ -46,18 +47,15 @@ public class CategoryController {
 
     @GetMapping("/categories/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("categoryModel", categoryService.findById(id));
-        return "categories/form";
+        model.addAttribute(categoryService.findById(id));
+        return "admin/pages/categories";
     }
 
-    @PostMapping("/categories/save")
-    public String save(@Valid CategoryModel category, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "categories/form";
-        }
-        categoryService.save(category);
-        redirect.addFlashAttribute("successMessage", "Saved category successfully!");
-        return "redirect:/admin/categories";
+    @PostMapping("admin/categories")
+    public String save(@Valid CategoryModel categoryModel, Model model) {
+        categoryService.save(categoryModel);
+        model.addAttribute("categories", categoryService.findAll());
+        return "admin/pages/categories";
     }
 
     @GetMapping("/categories/{id}/delete")

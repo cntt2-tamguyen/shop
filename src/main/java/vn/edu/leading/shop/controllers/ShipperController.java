@@ -3,7 +3,6 @@ package vn.edu.leading.shop.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,18 +45,15 @@ public class ShipperController {
 
     @GetMapping("/shippers/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("shipperModel", shipperService.findById(id));
-        return "shippers/form";
+        model.addAttribute(shipperService.findById(id));
+        return "admin/pages/shippers";
     }
 
-    @PostMapping("/shippers/save")
-    public String save(@Valid ShipperModel shipper, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "shippers/form";
-        }
+    @PostMapping("admin/shippers")
+    public String save(@Valid ShipperModel shipper,Model model) {
         shipperService.save(shipper);
-        redirect.addFlashAttribute("successMessage", "Saved shipper successfully!");
-        return "redirect:/admin/shippers";
+        model.addAttribute("shippers", shipperService.findAll());
+        return "admin/pages/shippers";
     }
 
     @GetMapping("/shippers/{id}/delete")

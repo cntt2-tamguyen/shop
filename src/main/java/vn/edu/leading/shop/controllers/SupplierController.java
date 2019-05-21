@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import vn.edu.leading.shop.models.CustomerModel;
 import vn.edu.leading.shop.models.SupplierModel;
 import vn.edu.leading.shop.services.SupplierService;
 
@@ -46,18 +47,15 @@ public class SupplierController {
 
     @GetMapping("/suppliers/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("supplierModel", supplierService.findById(id));
-        return "suppliers/form";
+        model.addAttribute(supplierService.findById(id));
+        return "admin/pages/suppliers";
     }
 
-    @PostMapping("/suppliers/save")
-    public String save(@Valid SupplierModel supplier, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "suppliers/form";
-        }
+    @PostMapping("admin/suppliers")
+    public String save(@Valid SupplierModel supplier, Model model) {
         supplierService.save(supplier);
-        redirect.addFlashAttribute("successMessage", "Saved supplier successfully!");
-        return "redirect:/admin/suppliers";
+        model.addAttribute("suppliers", supplierService.findAll());
+        return "admin/pages/suppliers";
     }
 
     @GetMapping("/suppliers/{id}/delete")

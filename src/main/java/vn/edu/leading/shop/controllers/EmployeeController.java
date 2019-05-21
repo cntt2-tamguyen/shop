@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import vn.edu.leading.shop.models.CustomerModel;
 import vn.edu.leading.shop.models.EmployeeModel;
 import vn.edu.leading.shop.services.EmployeeService;
 
@@ -46,18 +47,15 @@ public class EmployeeController {
 
     @GetMapping("/employees/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("customerModel", employeeService.findById(id));
-        return "employees/form";
+        model.addAttribute(employeeService.findById(id));
+        return "admin/pages/employees";
     }
 
-    @PostMapping("/employees/save")
-    public String save(@Valid EmployeeModel employee, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "employees/form";
-        }
+    @PostMapping("admin/employees")
+    public String save(@Valid EmployeeModel employee, Model model) {
         employeeService.save(employee);
-        redirect.addFlashAttribute("successMessage", "Saved employee successfully!");
-        return "redirect:/admin/employees";
+        model.addAttribute("employees", employeeService.findAll());
+        return "admin/pages/employees";
     }
 
     @GetMapping("/employees/{id}/delete")

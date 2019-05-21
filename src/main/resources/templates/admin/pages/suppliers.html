@@ -66,13 +66,107 @@
                                     <td th:text="${supplier.country}"></td>
                                     <td th:text="${supplier.phone}"></td>
                                     <td>
-                                        <a class="mr-sm-2 text-primary" href="#"
-                                           th:href="@{/suppliers/{id}/edit(id=${supplier.id})}">
+                                        <a class="text-primary" data-toggle="modal"
+                                           th:data-target="'#edit-'+${supplier.id}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="text-danger" href="#" th:href="@{/suppliers/{id}/delete(id=${supplier.id})}">
+                                        <div aria-hidden="true" aria-labelledby="editSupplier" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'edit-'+${supplier.id}">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editSupplier">Edit Supplier</h5>
+                                                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                                                type="button">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="#" method="post"  th:action="@{/admin/suppliers}"
+                                                              th:object="${supplier}">
+
+                                                            <input name="id"  th:value="*{id}" type="hidden" />
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Supplier name"
+                                                                       th:value="*{supplierName}" type="text" name="supplierName"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Contact name"
+                                                                       th:value="*{contactName}" type="text" name="contactName"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Address" th:value="*{address}"
+                                                                       type="text" name="address"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="City" th:value="*{city}"
+                                                                       type="text" name="city"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Postal Code" th:value="*{postalCode}"
+                                                                       type="text" name="postalCode"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Country" th:value="*{country}"
+                                                                       type="text" name="country"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Phone" th:value="*{phone}"
+                                                                       type="text" name="phone"/>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                                        type="button">Close
+                                                                </button>
+                                                                <button class="btn btn-primary" type="submit">Save
+                                                                </button>
+                                                            </div>
+                                                            <!--<div class="form-group">-->
+                                                            <!--<button class="btn btn-block btn-primary" type="submit">-->
+                                                            <!--<i class="fa fa-save"></i> Save-->
+                                                            <!--</button>-->
+                                                            <!--</div>-->
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="text-danger" data- data-toggle="modal"
+                                           th:data-target="'#popup-'+${supplier.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
+                                        <!-- Modal -->
+                                        <div aria-hidden="true" aria-labelledby="deleteSupplier" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'popup-'+${supplier.id}">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteSuppliers">Warning !!!</h5>
+                                                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                                                type="button">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body"
+                                                         th:text="'Do you want delete '+${supplier.supplierName}+' ?'">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-dismiss="modal"
+                                                                type="button">No
+                                                        </button>
+                                                        <a class="btn btn-primary"
+                                                           th:href="@{/suppliers/{id}/delete(id=${supplier.id})}">Yes</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>

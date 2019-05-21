@@ -62,13 +62,97 @@
                                     <td th:text="${employee.photo}"></td>
                                     <td th:text="${employee.notes}"></td>
                                     <td>
-                                        <a class="mr-sm-2 text-primary" href="#"
-                                           th:href="@{/employees/{id}/edit(id=${employee.id})}">
+                                        <a class="text-primary" data-toggle="modal"
+                                           th:data-target="'#edit-'+${employee.id}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="text-danger" href="#" th:href="@{/employees/{id}/delete(id=${employee.id})}">
+                                        <div aria-hidden="true" aria-labelledby="editEmployee" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'edit-'+${employee.id}">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editEmployee">Edit Employee</h5>
+                                                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                                                type="button">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="#" method="post"  th:action="@{/admin/employees}"
+                                                              th:object="${employee}">
+
+                                                            <input name="id"  th:value="*{id}" type="hidden" />
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Last name"
+                                                                       th:value="*{lastName}" type="text" name="lastName"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="First name"
+                                                                       th:value="*{firstName}" type="text" name="firstName"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Birthday" th:value="*{birthDate}"
+                                                                       type="text" name="birthDate"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Photo" th:value="*{photo}"
+                                                                       type="text" name="photo"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Note" th:value="*{notes}"
+                                                                       type="text" name="notes"/>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                                        type="button">Close
+                                                                </button>
+                                                                <button class="btn btn-primary" type="submit">Save
+                                                                </button>
+                                                            </div>
+                                                            <!--<div class="form-group">-->
+                                                            <!--<button class="btn btn-block btn-primary" type="submit">-->
+                                                            <!--<i class="fa fa-save"></i> Save-->
+                                                            <!--</button>-->
+                                                            <!--</div>-->
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="text-danger" data- data-toggle="modal"
+                                           th:data-target="'#popup-'+${employee.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
+                                        <!-- Modal -->
+                                        <div aria-hidden="true" aria-labelledby="deleteEmployee" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'popup-'+${employee.id}">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteEmployee">Warning !!!</h5>
+                                                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                                                type="button">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body"
+                                                         th:text="'Do you want delete '+${employee.lastName}+' ?'">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-dismiss="modal"
+                                                                type="button">No
+                                                        </button>
+                                                        <a class="btn btn-primary"
+                                                           th:href="@{/employees/{id}/delete(id=${employee.id})}">Yes</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>
