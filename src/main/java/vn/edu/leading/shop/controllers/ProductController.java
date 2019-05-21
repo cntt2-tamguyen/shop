@@ -51,6 +51,8 @@ public class ProductController {
     @GetMapping("/products/add")
     public String add(Model model) {
         model.addAttribute("productModel", new ProductModel());
+        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("suppliers", supplierService.findAll());
         return "products/form";
     }
 

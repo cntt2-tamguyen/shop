@@ -51,6 +51,8 @@ public class OrderDetailController {
     @GetMapping("/orderDetails/add")
     public String add(Model model) {
         model.addAttribute("orderDetailModel", new OrderDetailModel());
+        model.addAttribute("orders", orderService.findAll());
+        model.addAttribute("products", productService.findAll());
         return "orderDetails/form";
     }
 

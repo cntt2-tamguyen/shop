@@ -56,6 +56,9 @@ public class OrderController {
     @GetMapping("/orders/add")
     public String add(Model model) {
         model.addAttribute("orderModel", new OrderModel());
+        model.addAttribute("customers", customerService.findAll());
+        model.addAttribute("employees", employeeService.findAll());
+        model.addAttribute("shippers", shipperService.findAll());
         return "orders/form";
     }
 
